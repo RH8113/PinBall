@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour
     private GameObject gameoverText;
 
     private GameObject scoreText;
-    private int score;
+    private int score = 0;
    
     
     void Start()
@@ -26,12 +26,14 @@ public class BallController : MonoBehaviour
             this.gameoverText.GetComponent<Text>().text = "Game Over";
         }
 
-        this.scoreText.GetComponent<Text>().text = "Score" + score;
+        
         
     }
 
     void OnCollisionEnter(Collision other)
     {
+        this.scoreText.GetComponent<Text>().text = "Score" + this.score + "pt";
+        
         if(other.gameObject.tag == "SmallStarTag")
         {
             Debug.Log(this.score += 10);
